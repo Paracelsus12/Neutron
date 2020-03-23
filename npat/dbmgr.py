@@ -114,7 +114,7 @@ def get_connection(db='decay'):
 	def connector(dbnm):
 		try:
 			if os.path.getsize(path(dbnm))>0:
-				return sqlite3.connect(path(dbnm))
+				return sqlite3.connect(path(dbnm),check_same_thread=False)
 			else:
 				raise ValueError('{} exists but is of zero size.'.format(dbnm))
 		except:
